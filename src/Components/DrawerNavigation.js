@@ -1,8 +1,15 @@
 import React from "react";
-import { Drawer, Button, Dropdown, Sidenav, Nav } from "rsuite";
-import { UserBadge, UserInfo, PeoplesCostomize } from "@rsuite/icons";
+import { Drawer, Dropdown, Sidenav, Nav } from "rsuite";
+import { UserBadge, PeoplesCostomize } from "@rsuite/icons";
+import { NavLink, useNavigate } from "react-router-dom";
+import TagNumberIcon from "@rsuite/icons/TagNumber";
 
 function DrawerNavigation(props) {
+  const navigate = useNavigate();
+  const navigateOnClick = (route) => {
+    props.setOpen(false);
+    navigate(route);
+  };
   return (
     <div>
       <Drawer
@@ -14,22 +21,50 @@ function DrawerNavigation(props) {
       >
         <Drawer.Header>
           <Drawer.Title>Rsuite Tutorial</Drawer.Title>
-          {/* {<Drawer.Actions>
-            <Button onClick={() => props.setOpen(false)}>Cancel</Button>
-            <Button onClick={() => props.setOpen(false)} appearance="primary">
-              Confirm
-            </Button>
-          </Drawer.Actions>} */}
         </Drawer.Header>
         <Drawer.Body style={{ padding: 0, margin: 0 }}>
           <div style={styles}>
             <Sidenav appearance="inverse" defaultOpenKeys={["3", "4"]}>
               <Sidenav.Body>
                 <Nav>
-                  <Nav.Item eventKey="1" active icon={<UserBadge />}>
+                  <Nav.Item
+                    eventKey="1"
+                    active
+                    onClick={navigateOnClick.bind(this, "/dashboard")}
+                    icon={<UserBadge />}
+                  >
                     Dashboard
                   </Nav.Item>
-                  <Nav.Item eventKey="2" icon={<UserInfo />}>
+                  <Dropdown
+                    eventKey="2"
+                    title="Proforma Invoices"
+                    icon={<TagNumberIcon />}
+                  >
+                    <NavLink
+                      to="/proforma"
+                      style={{ textDecoration: "none" }}
+                      onClick={navigateOnClick.bind(this, "/proforma")}
+                    >
+                      <Dropdown.Item eventKey="2-1">
+                        Proforma Invoice
+                      </Dropdown.Item>
+                    </NavLink>
+                  </Dropdown>
+
+                  <Dropdown
+                    eventKey="3"
+                    title="Invoices"
+                    icon={<PeoplesCostomize />}
+                  >
+                    <NavLink
+                      to="/mhe"
+                      style={{ textDecoration: "none" }}
+                      onClick={navigateOnClick.bind(this, "/mhe")}
+                    >
+                      <Dropdown.Item eventKey="5-1">Rodey</Dropdown.Item>
+                    </NavLink>
+                  </Dropdown>
+                  {/* {<Nav.Item eventKey="2" icon={<UserInfo />}>
                     User Group
                   </Nav.Item>
                   <Dropdown
@@ -58,7 +93,7 @@ function DrawerNavigation(props) {
                         Action Params
                       </Dropdown.Item>
                     </Dropdown.Menu>
-                  </Dropdown>
+                  </Dropdown>} */}
                 </Nav>
               </Sidenav.Body>
             </Sidenav>

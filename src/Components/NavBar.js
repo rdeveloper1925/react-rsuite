@@ -1,7 +1,8 @@
 import React from "react";
-import { Navbar, Nav, Dropdown } from "rsuite";
+import { Navbar, Nav, Dropdown, InputGroup, Input } from "rsuite";
 import MenuIcon from "@rsuite/icons/Menu";
 import DrawerNavigation from "./DrawerNavigation";
+import SearchIcon from "@rsuite/icons/Search";
 
 function NavBar(props) {
   const [open, setOpen] = React.useState(false);
@@ -16,17 +17,19 @@ function NavBar(props) {
           <strong>Rsuite Tutorial</strong>
         </Navbar.Brand>
         <Nav>
-          <Nav.Item>Home</Nav.Item>
-          <Nav.Item>News</Nav.Item>
-          <Nav.Item>Products</Nav.Item>
-          <Dropdown title="About">
-            <Dropdown.Item>Company</Dropdown.Item>
-            <Dropdown.Item>Team</Dropdown.Item>
-            <Dropdown.Item>Contact</Dropdown.Item>
-          </Dropdown>
+          <Nav.Item>
+            <InputGroup size="md" style={{ width: "100%" }}>
+              <Input placeholder="Search" />
+              <InputGroup.Addon>
+                <SearchIcon />
+              </InputGroup.Addon>
+            </InputGroup>
+          </Nav.Item>
         </Nav>
         <Nav pullRight>
-          <Nav.Item>Profile</Nav.Item>
+          <Dropdown title="Profile">
+            <Dropdown.Item>Hello</Dropdown.Item>
+          </Dropdown>
         </Nav>
       </Navbar>
       <DrawerNavigation open={open} setOpen={setOpen} />
