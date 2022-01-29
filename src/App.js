@@ -4,8 +4,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Screens/Dashboard";
 import ProformaInvoices from "./Screens/ProformaInvoices";
-import Darkmode from "./Screens/Darkmode";
 import ThemeContext from "./Store/ThemeContext";
+import TestScreen from "./Screens/TestScreen";
 
 function App() {
   const [theme, setTheme] = React.useState("dark");
@@ -32,7 +32,15 @@ function App() {
           }
           exact
         />
-        <Route path="/darkmode" element={<Darkmode />} exact />
+        <Route
+          path="/test"
+          element={
+            <NavBar>
+              <TestScreen />
+            </NavBar>
+          }
+          exact
+        />
         <Route path="*" element={<NavBar>404</NavBar>} />
       </Routes>
     </ThemeContext.Provider>
