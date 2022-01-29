@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Drawer, Dropdown, Sidenav, Nav } from "rsuite";
 import { UserBadge, PeoplesCostomize } from "@rsuite/icons";
 import { NavLink, useNavigate } from "react-router-dom";
 import TagNumberIcon from "@rsuite/icons/TagNumber";
+import ThemeContext from "../Store/ThemeContext";
 
 function DrawerNavigation(props) {
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const navigateOnClick = (route) => {
     props.setOpen(false);
@@ -24,7 +26,10 @@ function DrawerNavigation(props) {
         </Drawer.Header>
         <Drawer.Body style={{ padding: 0, margin: 0 }}>
           <div style={styles}>
-            <Sidenav appearance="inverse" defaultOpenKeys={["3", "4"]}>
+            <Sidenav
+              appearance={theme == "light" ? "inverse" : "default"}
+              defaultOpenKeys={["3", "4"]}
+            >
               <Sidenav.Body>
                 <Nav>
                   <Nav.Item

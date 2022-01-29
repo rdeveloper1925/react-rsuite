@@ -1,12 +1,17 @@
 import NavBar from "./Components/NavBar";
 import "rsuite/dist/rsuite.min.css";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Screens/Dashboard";
 import ProformaInvoices from "./Screens/ProformaInvoices";
+import Darkmode from "./Screens/Darkmode";
+import ThemeContext from "./Store/ThemeContext";
 
 function App() {
+  const [theme, setTheme] = React.useState("dark");
+
   return (
-    <div>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       <Routes>
         <Route path="/" element={<NavBar>Home</NavBar>} exact />
         <Route
@@ -27,9 +32,10 @@ function App() {
           }
           exact
         />
+        <Route path="/darkmode" element={<Darkmode />} exact />
         <Route path="*" element={<NavBar>404</NavBar>} />
       </Routes>
-    </div>
+    </ThemeContext.Provider>
   );
 }
 
