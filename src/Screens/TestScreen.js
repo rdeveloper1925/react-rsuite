@@ -1,6 +1,7 @@
 import React from "react";
 import { CompleteForm } from "../Components/Inputs";
-import { Schema } from "rsuite";
+import { Col, Grid, Row, Schema } from "rsuite";
+import { CardCollapsible, CompleteModal } from "../Components/Utilities";
 
 function TestScreen() {
   //schema for the form
@@ -35,10 +36,21 @@ function TestScreen() {
     <div>
       <h3>Form Component testing</h3>
       <CompleteForm
+        fluid
         fields={fields}
         onSubmit={submitHandler}
         validation={formValidation}
       />
+      <br />
+      <CompleteModal btnTitle="Open Modal" title="My Modal" body="body" />
+      <CardCollapsible />
+      <CardCollapsible />
+      <CardCollapsible />
+      <CardCollapsible />
+      <CardCollapsible />
+      <CardCollapsible />
+      <CardCollapsible />
+      <CardCollapsible />
     </div>
   );
 }
