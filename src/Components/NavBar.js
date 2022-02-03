@@ -96,13 +96,12 @@ function DrawerNavigation(props) {
           <div style={styles}>
             <Sidenav
               appearance={theme === "light" ? "inverse" : "default"}
-              defaultOpenKeys={["3", "4"]}
+              // {defaultOpenKeys={["3", "4"]}}
             >
               <Sidenav.Body>
                 <Nav>
                   <Nav.Item
                     eventKey="1"
-                    active
                     onClick={navigateOnClick.bind(this, "/dashboard")}
                     icon={<UserBadge size="18px" />}
                   >
@@ -118,41 +117,11 @@ function DrawerNavigation(props) {
 
                   <Nav.Item
                     eventKey="2"
-                    active
                     onClick={navigateOnClick.bind(this, "/customers")}
                     icon={<HiOutlineUserGroup size="18px" />}
                   >
                     Customers
                   </Nav.Item>
-                  <Dropdown
-                    eventKey="3"
-                    title="Proforma Invoices"
-                    icon={<TagNumberIcon size="18px" />}
-                  >
-                    <NavLink
-                      to="/proforma"
-                      style={{ textDecoration: "none" }}
-                      onClick={navigateOnClick.bind(this, "/proforma")}
-                    >
-                      <Dropdown.Item eventKey="3-1">
-                        Proforma Invoice
-                      </Dropdown.Item>
-                    </NavLink>
-                  </Dropdown>
-
-                  <Dropdown
-                    eventKey="4"
-                    title="Invoices"
-                    icon={<PeoplesCostomize />}
-                  >
-                    <NavLink
-                      to="/mhe"
-                      style={{ textDecoration: "none" }}
-                      onClick={navigateOnClick.bind(this, "/mhe")}
-                    >
-                      <Dropdown.Item eventKey="5-1">Rodey</Dropdown.Item>
-                    </NavLink>
-                  </Dropdown>
                 </Nav>
               </Sidenav.Body>
             </Sidenav>
