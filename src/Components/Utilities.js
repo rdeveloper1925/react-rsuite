@@ -10,6 +10,7 @@ import {
 import React from "react";
 import { AiOutlineFundView, AiFillEdit, AiFillDelete } from "react-icons/ai";
 
+//Function to create modal
 export function CompleteModal({ title, children, ...others }) {
   const [open, setOpen] = React.useState(false);
   const modalOpenClose = () => setOpen(!open);
