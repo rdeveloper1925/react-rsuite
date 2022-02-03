@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { AiOutlineFundView, AiFillEdit, AiFillDelete } from "react-icons/ai";
 
-export function CompleteModal({ btnTitle, title, body, ...others }) {
+export function CompleteModal({ title, children, ...others }) {
   const [open, setOpen] = React.useState(false);
   const modalOpenClose = () => setOpen(!open);
   return (
@@ -18,7 +18,7 @@ export function CompleteModal({ btnTitle, title, body, ...others }) {
       <ButtonToolbar>
         <Button appearance="primary" onClick={modalOpenClose}>
           {" "}
-          {btnTitle}
+          {title}
         </Button>
       </ButtonToolbar>
 
@@ -26,15 +26,15 @@ export function CompleteModal({ btnTitle, title, body, ...others }) {
         <Modal.Header>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{body}</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body>{children}</Modal.Body>
+        {/* {<Modal.Footer>
           <Button onClick={modalOpenClose} appearance="primary">
             Ok
           </Button>
           <Button onClick={modalOpenClose} appearance="subtle">
             Cancel
           </Button>
-        </Modal.Footer>
+        </Modal.Footer>} */}
       </Modal>
     </div>
   );
@@ -76,6 +76,20 @@ export function CardCollapsible(props) {
           </ButtonToolbar>
         </Panel>
       </PanelGroup>
+    </Panel>
+  );
+}
+
+export function WidgetCards({ children, style, title, ...rest }) {
+  return (
+    <Panel
+      shaded
+      bordered
+      bodyFill
+      style={{ display: "inline-block", ...style }}
+      {...rest}
+    >
+      <Panel header={title}>{children}</Panel>
     </Panel>
   );
 }

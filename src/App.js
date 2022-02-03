@@ -6,6 +6,7 @@ import Dashboard from "./Screens/Dashboard";
 import ProformaInvoices from "./Screens/ProformaInvoices";
 import ThemeContext from "./Store/ThemeContext";
 import TestScreen from "./Screens/TestScreen";
+import Customers from "./Screens/Customers";
 
 function App() {
   const [theme, setTheme] = React.useState("dark");
@@ -37,6 +38,15 @@ function App() {
           element={
             <NavBar>
               <TestScreen />
+            </NavBar>
+          }
+          exact
+        />
+        <Route
+          path="/customers"
+          element={
+            <NavBar>
+              <Customers />
             </NavBar>
           }
           exact

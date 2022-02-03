@@ -17,6 +17,7 @@ import MenuIcon from "@rsuite/icons/Menu";
 import SearchIcon from "@rsuite/icons/Search";
 import { BsSunFill, BsFillMoonFill } from "react-icons/bs";
 import ThemeContext from "../Store/ThemeContext";
+import { HiOutlineUserGroup } from "react-icons/hi";
 
 function NavBar(props) {
   const [open, setOpen] = React.useState(false);
@@ -40,7 +41,7 @@ function NavBar(props) {
         </Navbar.Brand>
         <Nav>
           <Nav.Item>
-            <InputGroup size="md" style={{ width: "100%" }}>
+            <InputGroup smHide size="sm" style={{ width: "100%" }}>
               <Input placeholder="Search" />
               <InputGroup.Addon>
                 <SearchIcon />
@@ -103,28 +104,44 @@ function DrawerNavigation(props) {
                     eventKey="1"
                     active
                     onClick={navigateOnClick.bind(this, "/dashboard")}
-                    icon={<UserBadge />}
+                    icon={<UserBadge size="18px" />}
                   >
                     Dashboard
                   </Nav.Item>
-                  <Dropdown
+                  <Nav.Item
+                    eventKey="1"
+                    onClick={navigateOnClick.bind(this, "/customers")}
+                    icon={<UserBadge size="18px" />}
+                  >
+                    Customers
+                  </Nav.Item>
+
+                  <Nav.Item
                     eventKey="2"
+                    active
+                    onClick={navigateOnClick.bind(this, "/customers")}
+                    icon={<HiOutlineUserGroup size="18px" />}
+                  >
+                    Customers
+                  </Nav.Item>
+                  <Dropdown
+                    eventKey="3"
                     title="Proforma Invoices"
-                    icon={<TagNumberIcon />}
+                    icon={<TagNumberIcon size="18px" />}
                   >
                     <NavLink
                       to="/proforma"
                       style={{ textDecoration: "none" }}
                       onClick={navigateOnClick.bind(this, "/proforma")}
                     >
-                      <Dropdown.Item eventKey="2-1">
+                      <Dropdown.Item eventKey="3-1">
                         Proforma Invoice
                       </Dropdown.Item>
                     </NavLink>
                   </Dropdown>
 
                   <Dropdown
-                    eventKey="3"
+                    eventKey="4"
                     title="Invoices"
                     icon={<PeoplesCostomize />}
                   >
