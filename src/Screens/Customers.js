@@ -38,6 +38,7 @@ function Customers() {
     if (formValue) {
       var formData = getFormData(event, fields);
       //TODO: WRITE CUSTOMER TO DB
+      
     }
   };
   return (

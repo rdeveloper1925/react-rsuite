@@ -45,7 +45,7 @@ const dbConnection = () => {
     host: "localhost",
     user: "root",
     password: "",
-    database: "api",
+    database: "code42",
   });
   conn.connect();
   //   conn.query("SELECT * from products", (error, rows, fields) => {

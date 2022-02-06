@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
+const { dbConnection } = require("./helpers");
 const APP_URL = "http://localhost:3000";
 const app = express();
 const port = 3001;
@@ -68,7 +69,13 @@ app.get("/api", (request, response) => {
   response.json({ message: "Server Ready todd serve ya" });
 });
 
-app.all("", (request, response) => {
+//Inserting customers in the db
+app.post("/api/customer", (request, response) => {
+  var con = dbConnection();
+  con.query("");
+});
+
+app.all("*", (request, response) => {
   //console.log("Request has been bounced", request);
   response.json({ message: "Route Not found" });
   //response.redirect("http://localhost:3000/"); //Bounce anyone to our site
